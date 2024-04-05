@@ -1,7 +1,7 @@
-import { ChildPros } from '@/types'
-import Navbar from './(home)/_components/navbar'
+import { ChildProps } from '@/types'
+import Navbar from './_components/navbar'
 
-const Layout = ({ children }: ChildPros) => {
+function Layout({ children }: ChildProps) {
 	return (
 		<div>
 			<Navbar />

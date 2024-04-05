@@ -1,6 +1,6 @@
-import { enUS, ruRU, trTR } from '@clerk/localizations'
-import { clsx, type ClassValue } from 'clsx'
+import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { enUS, ruRU, trTR } from '@clerk/localizations'
 import { uzUZ } from './uz-UZ'
 
 export function cn(...inputs: ClassValue[]) {
@@ -12,4 +12,11 @@ export function localization(lng: string) {
 	if (lng === 'ru') return ruRU
 	if (lng === 'tr') return trTR
 	if (lng === 'uz') return uzUZ
+}
+
+export function getCurrentLng(lng: string) {
+	if (lng === 'en') return 'English'
+	if (lng === 'ru') return 'Русский'
+	if (lng === 'tr') return 'Türkçe'
+	if (lng === 'uz') return 'O‘zbek'
 }
