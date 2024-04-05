@@ -1,13 +1,19 @@
+'use client'
+
 import LanguageDropdown from '@/components/shared/language-dropdown'
 import Logo from '@/components/shared/logo'
 import ModeToggle from '@/components/shared/mode-toggle'
+import UserBox from '@/components/shared/user-box'
 import { Button } from '@/components/ui/button'
 import { navLinks } from '@/constants'
+import useTranslate from '@/hooks/use-translate'
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import GlobalSearch from './global-search'
 
 function Navbar() {
+	const t = useTranslate()
 	return (
 		<div className='fixed inset-0 z-40 h-20 bg-background/70 backdrop-blur-xl'>
 			<div className='container mx-auto flex h-full max-w-7xl items-center justify-between border-b'>
@@ -20,7 +26,7 @@ function Navbar() {
 								key={nav.route}
 								className='font-medium transition-all hover:text-blue-500 hover:underline'
 							>
-								{nav.name}
+								{t(nav.name)}
 							</Link>
 						))}
 					</div>
@@ -35,13 +41,21 @@ function Navbar() {
 						</Button>
 						<ModeToggle />
 					</div>
-
-					<Button variant={'ghost'} size={'lg'} rounded={'full'}>
-						Log in
-					</Button>
-					<Button size={'lg'} rounded={'full'}>
-						Sign Up
-					</Button>
+					<SignedIn>
+						<UserBox />
+					</SignedIn>
+					<SignedOut>
+						<SignInButton mode='modal'>
+							<Button variant={'ghost'} size={'lg'} rounded={'full'}>
+								Log in
+							</Button>
+						</SignInButton>
+						<SignUpButton mode='modal'>
+							<Button size={'lg'} rounded={'full'}>
+								Sign Up
+							</Button>
+						</SignUpButton>
+					</SignedOut>
 				</div>
 			</div>
 		</div>
