@@ -1,12 +1,13 @@
+import { ThemeProvider } from '@/components/providers/theme.provider'
+import { Toaster } from '@/components/ui/toaster'
+import { languages } from '@/i18n/settings'
+import { localization } from '@/lib/utils'
+import { ChildProps } from '@/types'
+import { ClerkProvider } from '@clerk/nextjs'
+import { dir } from 'i18next'
 import type { Metadata } from 'next'
 import { Roboto, Space_Grotesk as SpaceGrotesk } from 'next/font/google'
 import './globals.css'
-import { ChildProps } from '@/types'
-import { ThemeProvider } from '@/components/providers/theme.provider'
-import { languages } from '@/i18n/settings'
-import { dir } from 'i18next'
-import { ClerkProvider } from '@clerk/nextjs'
-import { localization } from '@/lib/utils'
 
 const roboto = Roboto({
 	subsets: ['latin', 'cyrillic'],
@@ -50,6 +51,7 @@ function RootLayout({ children, params: { lng } }: Props) {
 						enableSystem
 						disableTransitionOnChange
 					>
+						<Toaster />
 						{children}
 					</ThemeProvider>
 				</body>

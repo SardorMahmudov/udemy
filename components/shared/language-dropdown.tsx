@@ -1,6 +1,11 @@
 'use client'
 
+import { lngs } from '@/constants'
+import { cn, getCurrentLng } from '@/lib/utils'
 import { Languages } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useParams, usePathname } from 'next/navigation'
 import { Button } from '../ui/button'
 import {
 	DropdownMenu,
@@ -9,11 +14,6 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import Image from 'next/image'
-import { lngs } from '@/constants'
-import Link from 'next/link'
-import { cn, getCurrentLng } from '@/lib/utils'
-import { useParams } from 'next/navigation'
 
 interface Props {
 	isMobile?: boolean
@@ -21,7 +21,7 @@ interface Props {
 
 function LanguageDropdown({ isMobile = false }: Props) {
 	const { lng } = useParams()
-
+	const pathanme = usePathname()
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -43,7 +43,7 @@ function LanguageDropdown({ isMobile = false }: Props) {
 			<DropdownMenuContent className='w-56'>
 				<DropdownMenuGroup>
 					{lngs.map(item => (
-						<Link key={item.route} href={`/${item.route}`}>
+						<Link key={item.route} href={`/${item.route}/${pathanme.slice(4)}`}>
 							<DropdownMenuItem
 								className={cn(
 									'cursor-pointer',
