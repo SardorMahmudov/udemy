@@ -11,7 +11,7 @@ import Section from '@/database/section.model'
 import Lesson from '@/database/lesson.model'
 import { calculateTotalDuration } from '@/lib/utils'
 import { FilterQuery } from 'mongoose'
-import Purchase from '@/database/purchase.modal'
+import Purchase from '@/database/purchase.model'
 import UserProgress from '@/database/use-progress.model'
 
 export const createCourse = async (data: ICreateCourse, clerkId: string) => {
@@ -271,5 +271,49 @@ export const getDashboardCourse = async (clerkId: string, courseId: string) => {
 		return { course, sections, progressPercentage }
 	} catch (error) {
 		throw new Error('Something went wrong while getting dashboard course!')
+	}
+}
+
+export const addFavoriteCourse = async (courseId: string, clerkId: string) => {
+	try {
+		await connectToDatabase()
+		const isFavourite = await User.findOne({
+			clerkId,
+			favouriteCourses: courseId,
+		})
+
+		if (isFavourite) {
+			throw new Error('Course already added to favorite')
+		}
+
+		const user = await User.findOne({ clerkId })
+
+		await User.findByIdAndUpdate(user._id, {
+			$push: { favouriteCourses: courseId },
+		})
+	} catch (error) {
+		throw new Error('Something went wrong while adding favorite course!')
+	}
+}
+
+export const addArchiveCourse = async (courseId: string, clerkId: string) => {
+	try {
+		await connectToDatabase()
+		const isArchive = await User.findOne({
+			clerkId,
+			archiveCourses: courseId,
+		})
+
+		if (isArchive) {
+			throw new Error('Course already added to archive')
+		}
+
+		const user = await User.findOne({ clerkId })
+
+		await User.findByIdAndUpdate(user._id, {
+			$push: { archiveCourses: courseId },
+		})
+	} catch (error) {
+		throw new Error('Something went wrong while adding favorite course!')
 	}
 }
