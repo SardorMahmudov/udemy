@@ -1,4 +1,4 @@
-import { getCourses } from '@/action/course.action'
+import { getCourses } from '@/actions/course.action'
 import InstructorCourseCard from '@/components/cards/instructor-course.card'
 import Header from '../_components/header'
 
