@@ -54,7 +54,7 @@ async function Page({ params }: { params: { slug: string } }) {
 						<ShareBtns />
 					</div>
 				</div>
-				<div className='prose max-w-none flex-1 dark:prose-invert'>
+				<div className='prose dark:prose-invert max-w-none flex-1'>
 					{parse(blog.content.html)}
 				</div>
 			</div>
