@@ -1,4 +1,5 @@
 export interface ICourse {
+	slug: string | undefined
 	_id: string
 	title: string
 	description: string
@@ -11,4 +12,5 @@ export interface ICourse {
 	currentPrice: number
 	previewImage: string
 	published: boolean
+	tags: string
 }
