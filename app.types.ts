@@ -19,4 +19,5 @@ export interface ISection {
 	title: string
 	_id: string
 	postion: number
+	course: string
 }
