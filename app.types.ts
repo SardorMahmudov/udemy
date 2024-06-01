@@ -14,3 +14,9 @@ export interface ICourse {
 	published: boolean
 	tags: string
 }
+
+export interface ISection {
+	title: string
+	_id: string
+	postion: number
+}
