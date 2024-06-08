@@ -1,10 +1,10 @@
 'use client'
 
 import useTranslate from '@/hooks/use-translate'
-import { Clock3 } from 'lucide-react'
 import Image from 'next/image'
-import { PiStudentBold } from 'react-icons/pi'
 import ReactStars from 'react-stars'
+import { PiStudentBold } from 'react-icons/pi'
+import { Clock3 } from 'lucide-react'
 
 function Hero() {
 	const t = useTranslate()

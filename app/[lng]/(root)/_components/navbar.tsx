@@ -1,19 +1,19 @@
 'use client'
 
-import LanguageDropdown from '@/components/shared/language-dropdown'
 import Logo from '@/components/shared/logo'
 import ModeToggle from '@/components/shared/mode-toggle'
-import UserBox from '@/components/shared/user-box'
 import { Button } from '@/components/ui/button'
 import { navLinks } from '@/constants'
-import useTranslate from '@/hooks/use-translate'
-import { cn } from '@/lib/utils'
-import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { LogIn, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
-import { useParams, usePathname } from 'next/navigation'
 import GlobalSearch from './global-search'
+import LanguageDropdown from '@/components/shared/language-dropdown'
+import { SignInButton, SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs'
+import UserBox from '@/components/shared/user-box'
+import useTranslate from '@/hooks/use-translate'
 import Mobile from './mobile'
+import { useParams, usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 function Navbar() {
 	const t = useTranslate()

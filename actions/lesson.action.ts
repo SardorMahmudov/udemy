@@ -8,7 +8,7 @@ import { revalidatePath } from 'next/cache'
 
 export const getLessons = async (section: string) => {
 	try {
-		connectToDatabase()
+		await connectToDatabase()
 		return await Lesson.find({ section }).sort({ position: 1 })
 	} catch (error) {
 		throw new Error('Something went wrong!')
@@ -42,7 +42,7 @@ export const createLesson = async (params: ICreateLesson) => {
 	}
 }
 
-export const deleteLessons = async (id: string, path: string) => {
+export const deleteLesson = async (id: string, path: string) => {
 	try {
 		await connectToDatabase()
 		const lesson = await Lesson.findById(id)
@@ -68,6 +68,7 @@ export const editLesson = async (
 			minutes: Number(lesson.minutes),
 			seconds: Number(lesson.seconds),
 		}
+
 		await Lesson.findByIdAndUpdate(lessonId, { ...lesson, duration })
 		revalidatePath(path)
 	} catch (error) {

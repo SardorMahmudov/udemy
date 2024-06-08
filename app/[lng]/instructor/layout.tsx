@@ -2,7 +2,7 @@ import { ChildProps } from '@/types'
 import Navbar from './_components/navbar'
 import Sidebar from './_components/sidebar'
 
-const Layout = ({ children }: ChildProps) => {
+function Layout({ children }: ChildProps) {
 	return (
 		<>
 			<Navbar />

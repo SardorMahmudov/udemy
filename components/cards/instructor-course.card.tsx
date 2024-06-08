@@ -1,6 +1,6 @@
-import { ICourse } from '@/app.types'
 import Image from 'next/image'
 import { Badge } from '../ui/badge'
+import { ICourse } from '@/app.types'
 import Link from 'next/link'
 
 interface Props {

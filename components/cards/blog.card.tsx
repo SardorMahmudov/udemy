@@ -1,9 +1,9 @@
 import { getReadingTime } from '@/lib/utils'
 import { IBlog } from '@/types'
-import { format } from 'date-fns'
 import { CalendarDays, Clock, Dot, Layers2, Minus, Tag } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { format } from 'date-fns'
 import { Badge } from '../ui/badge'
 
 function BlogCard(blog: IBlog) {

@@ -1,6 +1,6 @@
-import CourseFieldsForm from '@/components/forms/course-fields.form'
 import { Separator } from '@/components/ui/separator'
 import Header from '../_components/header'
+import CourseFieldsForm from '@/components/forms/course-fields.form'
 
 function Page() {
 	return (

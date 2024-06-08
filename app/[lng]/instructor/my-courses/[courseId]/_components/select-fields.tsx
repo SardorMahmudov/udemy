@@ -6,39 +6,40 @@ import FillLoading from '@/components/shared/fill-loading'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import {
+	Form,
 	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
 	FormMessage,
 } from '@/components/ui/form'
-import { courseCategory, courseLanguage, courseLevels } from '@/constants'
-import useToggleEdit from '@/hooks/use-toggle-edit'
-import { selectFieldsSchema } from '@/lib/validation'
-import { zodResolver } from '@hookform/resolvers/zod'
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from '@radix-ui/react-select'
-import { Separator } from '@radix-ui/react-separator'
+} from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
+import { courseCategory, courseLanguage, courseLevels } from '@/constants'
+import useToggleEdit from '@/hooks/use-toggle-edit'
+import { selectFieldsSchema } from '@/lib/validation'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Edit2, X } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import { Form, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-const SelectFields = (course: ICourse) => {
+function SelectFields(course: ICourse) {
 	const { state, onToggle } = useToggleEdit()
 
 	return (
 		<Card>
 			<CardContent className='relative p-6'>
 				<div className='flex items-center justify-between'>
-					<span className='text-lg font-medium'>Information</span>
+					<span className='text-lg font-medium'>Select fields</span>
 					<Button size={'icon'} variant={'ghost'} onClick={onToggle}>
 						{state ? <X /> : <Edit2 />}
 					</Button>
@@ -73,11 +74,13 @@ const SelectFields = (course: ICourse) => {
 		</Card>
 	)
 }
+
+export default SelectFields
+
 interface FormsProps {
 	course: ICourse
 	onToggle: () => void
 }
-
 function Forms({ course, onToggle }: FormsProps) {
 	const [isLoading, setIsLoading] = useState(false)
 
@@ -100,8 +103,8 @@ function Forms({ course, onToggle }: FormsProps) {
 
 		toast.promise(promise, {
 			loading: 'Loading...',
-			success: 'Successfully',
-			error: 'Something went wrong',
+			success: 'Successfully updated!',
+			error: 'Something went wrong!',
 		})
 	}
 
@@ -208,4 +211,3 @@ function Forms({ course, onToggle }: FormsProps) {
 		</>
 	)
 }
-export default SelectFields

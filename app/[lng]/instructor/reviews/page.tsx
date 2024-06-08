@@ -1,6 +1,6 @@
-import InstructorReviewCard from '@/components/cards/instructor-review.card'
 import { Separator } from '@/components/ui/separator'
 import Header from '../_components/header'
+import InstructorReviewCard from '@/components/cards/instructor-review.card'
 
 function Page() {
 	return (

@@ -1,11 +1,11 @@
-import { Separator } from '@/components/ui/separator'
 import { getReadingTime } from '@/lib/utils'
 import { getDetailedBlog } from '@/service/blogs.service'
 import { format } from 'date-fns'
-import parse from 'html-react-parser'
 import { CalendarDays, Clock, Minus } from 'lucide-react'
 import Image from 'next/image'
 import ShareBtns from './_components/share-btns'
+import parse from 'html-react-parser'
+import { Separator } from '@/components/ui/separator'
 
 async function Page({ params }: { params: { slug: string } }) {
 	const blog = await getDetailedBlog(params.slug)
@@ -54,7 +54,7 @@ async function Page({ params }: { params: { slug: string } }) {
 						<ShareBtns />
 					</div>
 				</div>
-				<div className='prose dark:prose-invert max-w-none flex-1'>
+				<div className='prose max-w-none flex-1 dark:prose-invert'>
 					{parse(blog.content.html)}
 				</div>
 			</div>

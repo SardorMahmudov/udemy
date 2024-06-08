@@ -2,8 +2,9 @@ import BlogCard from '@/components/cards/blog.card'
 import TopBar from '@/components/shared/top-bar'
 import { getBlogs } from '@/service/blogs.service'
 
-const Page = async () => {
+async function Page() {
 	const blogs = await getBlogs()
+
 	return (
 		<>
 			<TopBar label='blogs' description='blogsDescription' />

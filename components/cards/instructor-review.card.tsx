@@ -1,9 +1,9 @@
 'use client'
 
 import { Flag } from 'lucide-react'
-import ReactStars from 'react-stars'
-import { Avatar, AvatarFallback } from '../ui/avatar'
 import { Button } from '../ui/button'
+import { Avatar, AvatarFallback } from '../ui/avatar'
+import ReactStars from 'react-stars'
 
 function InstructorReviewCard() {
 	return (

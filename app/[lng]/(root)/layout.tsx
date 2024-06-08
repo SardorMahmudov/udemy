@@ -1,6 +1,6 @@
 import { ChildProps } from '@/types'
-import Footer from './_components/footer'
 import Navbar from './_components/navbar'
+import Footer from './_components/footer'
 
 function Layout({ children }: ChildProps) {
 	return (

@@ -1,20 +1,9 @@
 'use client'
 
-import { createCourse } from '@/actions/course.action'
-import { courseCategory, courseLanguage, courseLevels } from '@/constants'
-import { courseStorageRefs } from '@/lib/firebase'
 import { courseSchema } from '@/lib/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { getDownloadURL, uploadString } from 'firebase/storage'
-import { ImageDown } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
-import { ChangeEvent, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'sonner'
 import { z } from 'zod'
-import { Button } from '../ui/button'
-import { Dialog, DialogContent } from '../ui/dialog'
 import {
 	Form,
 	FormControl,
@@ -24,6 +13,7 @@ import {
 	FormMessage,
 } from '../ui/form'
 import { Input } from '../ui/input'
+import { Textarea } from '../ui/textarea'
 import {
 	Select,
 	SelectContent,
@@ -31,7 +21,17 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '../ui/select'
-import { Textarea } from '../ui/textarea'
+import { courseCategory, courseLanguage, courseLevels } from '@/constants'
+import { Button } from '../ui/button'
+import { createCourse } from '@/actions/course.action'
+import { toast } from 'sonner'
+import { ChangeEvent, useState } from 'react'
+import { getDownloadURL, uploadString } from 'firebase/storage'
+import { courseStorageRefs } from '@/lib/firebase'
+import { ImageDown } from 'lucide-react'
+import { Dialog, DialogContent } from '../ui/dialog'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { useUser } from '@clerk/nextjs'
 
 function CourseFieldsForm() {

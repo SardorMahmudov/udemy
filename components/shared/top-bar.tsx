@@ -10,8 +10,9 @@ interface Props {
 	extra?: string
 }
 
-const TopBar = ({ label, description, extra }: Props) => {
+function TopBar({ label, extra, description }: Props) {
 	const t = useTranslate()
+
 	return (
 		<>
 			<div className='mt-20 h-12 bg-gradient-to-r from-secondary to-primary'>
