@@ -40,8 +40,13 @@ export interface ILesson {
 		minutes: number
 		seconds: number
 	}
+	userProgress: IUserProgress[]
 }
-
+export interface IUserProgress {
+	userId: string
+	lessonId: string
+	isCompleted: string
+}
 export interface IUser {
 	_id: string
 	clerkId: string
