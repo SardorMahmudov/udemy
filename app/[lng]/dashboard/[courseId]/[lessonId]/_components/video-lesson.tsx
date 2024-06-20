@@ -3,12 +3,7 @@
 import { ILesson } from '@/app.types'
 import useTranslate from '@/hooks/use-translate'
 import { useAuth } from '@clerk/nextjs'
-import {
-	useParams,
-	usePathname,
-	useRouter,
-	useSearchParams,
-} from 'next/navigation'
+import { useParams, usePathname, useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import Vimeo from '@vimeo/player'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -29,10 +24,7 @@ function VideoLesson({ lesson }: Props) {
 	const router = useRouter()
 	const pathname = usePathname()
 	const { userId } = useAuth()
-	const searchParams = useSearchParams()
 	const t = useTranslate()
-
-	const sectionId = searchParams.get('s')
 
 	useEffect(() => {
 		if (vimeoPlayerRef.current) {
@@ -46,6 +38,8 @@ function VideoLesson({ lesson }: Props) {
 
 			player.on('ended', onEnd)
 		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [lesson, pathname])
 
 	const onEnd = async () => {
